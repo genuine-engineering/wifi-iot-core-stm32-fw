@@ -16,21 +16,19 @@ LƯU Ý: Dự án đang triển khai, và mã nguồn chưa sẵn sàng
 
 ### Packet format: SLIP Protocol
 
-[source]
-----
+```c
 [0x7E - byte1 - byte2 - byten - ... - 0x7F]
 
 if byten = 0x7E or 0x7D or 0x7F then
 	byten = [0x7D byten^0x20]
 endif
-----
+```
 
 see: `src/proto.c`
 
 ### CRC : CRC16
 
-[source, c]
-----
+```c
 /* CITT CRC16 polynomial ^16 + ^12 + ^5 + 1 */
 /*---------------------------------------------------------------------------*/
 uint16_t crc16_add(uint8_t b, uint16_t acc)
@@ -55,7 +53,7 @@ uint16_t crc16_calc(uint8_t *data, uint32_t datalen, uint16_t acc)
   return acc;
 }
 
-----
+```
 
 ## Distribution
 
